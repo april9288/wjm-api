@@ -1,0 +1,52 @@
+{
+    "name": "wjm-api",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "start": "env-cmd -f ./config/prod.env node src/index.js",
+        "dev:server": "env-cmd -f ./config/dev.env nodemon src/index.js",
+        "dev:schema": "env-cmd -f ./config/dev.env node src/database/schema.js",
+        "test:w": "env-cmd -f ./config/test.env jest --watch"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "jest": {
+        "testEnvironment": "node"
+    },
+    "dependencies": {
+        "@sendgrid/mail": "^6.4.0",
+        "aws-sdk": "^2.507.0",
+        "axios": "^0.19.0",
+        "bcryptjs": "^2.4.3",
+        "cookie-parser": "^1.4.4",
+        "cors": "^2.8.5",
+        "env-cmd": "^9.0.3",
+        "express": "^4.17.1",
+        "jsonwebtoken": "^8.5.1",
+        "multer": "^1.4.2",
+        "pg": "^7.12.0",
+        "redis": "^2.8.0",
+        "sharp": "^0.23.0",
+        "stripe": "^7.8.0",
+        "uuid": "^3.3.3"
+    },
+    "devDependencies": {
+        "eslint": "^5.3.0",
+        "eslint-config-airbnb": "^17.1.1",
+        "eslint-config-node": "^4.0.0",
+        "eslint-config-prettier": "^6.0.0",
+        "eslint-plugin-import": "^2.18.0",
+        "eslint-plugin-jsx-a11y": "^6.2.3",
+        "eslint-plugin-node": "^9.1.0",
+        "eslint-plugin-prettier": "^3.1.0",
+        "eslint-plugin-react": "^7.14.2",
+        "faker": "^4.1.0",
+        "jest": "^24.8.0",
+        "pg-hstore": "^2.3.3",
+        "prettier": "^1.18.2",
+        "sequelize": "^5.12.3",
+        "supertest": "^4.0.2"
+    }
+}
