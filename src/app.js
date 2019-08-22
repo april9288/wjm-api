@@ -23,12 +23,26 @@ const adminPostRouter = require('./admin/post');
 const adminUserRouter = require('./admin/user');
 
 const app = express();
+
+const whitelist = [
+    process.env.SERVER_ORIGIN1,
+    process.env.SERVER_ORIGIN2,
+    process.env.SERVER_ORIGIN3,
+    process.env.SERVER_ORIGIN4,
+    process.env.SERVER_ORIGIN5
+];
 app.use(
     cors({
-        origin: process.env.SERVER_ORIGIN,
+        origin: (origin, callback) => {
+            if (whitelist.indexOf(origin) !== -1) {
+                callback(null, true);
+            } else {
+                callback(new Error('Not allowed by CORS'));
+            }
+        },
         credentials: true
     })
-); // allowing us to skip the same origin policy
+); // allowing us to accept only whitelisted origins
 
 app.use(cookieParser()); // parsing cookies in headers
 app.use(express.json()); // parsing body (in JSON format) in incoming requests
