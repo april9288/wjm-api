@@ -79,21 +79,35 @@ routes.post('/forgotPassword', async (req, res) => {
     };
 
     try {
-        // sending an email to inform the temporary password
+        // updating password
+        const dbResponse = await pool.query(forgotPasswordQuery);
+
+        if (dbResponse.rowCount === 0) {
+            // There is no such user in database
+            // will throw error
+            throw { message: 'No such user exists' };
+        }
+
+        // The email is registred in database
+        // will send an email with updated password
         const emailResponse = await forgotPasswordEmail(email, tempPassword);
 
-        // updating password
-        await pool.query(forgotPasswordQuery);
+        if (emailResponse[0].statusCode !== 202) {
+            throw { message: 'Failed to send email' };
+        }
 
         // formating a message
         const successMessage = {
             status: true,
-            message: 'temp password has been sent via email',
-            emailResponse
+            message: 'temp password has been sent via email'
         };
         res.status(200).send(successMessage);
     } catch (e) {
-        res.status(400).send({ status: false });
+        const errorMessage = {
+            status: false,
+            message: e.message
+        };
+        res.status(400).send(errorMessage);
     }
 });
 

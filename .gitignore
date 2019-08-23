@@ -1,9 +1,11 @@
 /node_modules
-/seed.js
 /schema.js
 /config
 /coverage
-/seed.csv
 note.text
+src/database/schema.js
+src/database/seed/seed_user.csv
+src/database/seed/seed-post.csv
+src/database/seed/seed-follow.csv
 
-/seed-post.js
+src/database/seed/*

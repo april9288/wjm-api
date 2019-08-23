@@ -3,6 +3,13 @@ const sg = require('@sendgrid/mail');
 sg.setApiKey(process.env.SENDGRID_API_KEY);
 
 const forgotPasswordEmail = async (userEmail, tempPassword) => {
+    if (process.env.NODE_ENV !== 'production') {
+        // test cases...
+        // try to avoid sending real emails...
+        // will replace with mock async tests
+        return [{ statusCode: 202 }];
+    }
+
     const response = await sg.send({
         to: userEmail,
         from: process.env.SENDGRID_EMAIL_FROM,

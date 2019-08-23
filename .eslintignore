@@ -4,3 +4,4 @@
 **/schema.js
 **/*.test.js
 /coverage
+README.md
