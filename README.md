@@ -6,6 +6,8 @@
 - Currently testing has been done for the login system
 
 ## AWS for Scaling
+![](aws.png)
+
 - Registered a domain with AWS Route 53
 - Deployed Express server on AWS EC2
 - Set up Postgresql on AWS RDS
