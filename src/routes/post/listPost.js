@@ -5,6 +5,12 @@ const pool = require('../../database/index');
 routes.get('/', async (req, res) => {
     const { offset } = req.query;
 
+    if (offset === undefined) {
+        return res
+            .status(400)
+            .send({ status: false, err: 'No Offset Provided' });
+    }
+
     try {
         const getPostQuery = {
             text:
@@ -21,7 +27,6 @@ routes.get('/', async (req, res) => {
 
         res.status(200).send(successMessage);
     } catch (err) {
-        console.log(err);
         res.status(400).send({ status: false, err });
     }
 });

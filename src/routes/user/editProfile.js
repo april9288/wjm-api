@@ -74,7 +74,7 @@ routes.post('/', auth, multer().single('photo400'), async (req, res) => {
 
         const updateAddressQuery = {
             text: `update addresses set address1 = $2, address2 = $3, city = $4, state = $5, zipcode = $6 where uid = $1`,
-            values: [id, address1, address2, city, state, Number(zipcode)]
+            values: [id, address1, address2, city, state, zipcode]
         };
 
         const updateAddress = await pool.query(updateAddressQuery);
@@ -82,7 +82,7 @@ routes.post('/', auth, multer().single('photo400'), async (req, res) => {
             const insertAddressQuery = {
                 text:
                     'INSERT INTO addresses (uid, address1, address2, city, state, zipcode) VALUES($1, $2, $3, $4, $5, $6)',
-                values: [id, address1, address2, city, state, Number(zipcode)]
+                values: [id, address1, address2, city, state, zipcode]
             };
             await pool.query(insertAddressQuery);
         }
@@ -92,7 +92,7 @@ routes.post('/', auth, multer().single('photo400'), async (req, res) => {
         };
         res.status(201).send(successMessage);
     } catch (e) {
-        res.status(400).send({ status: false });
+        res.status(400).send({ status: false, e });
     }
 });
 

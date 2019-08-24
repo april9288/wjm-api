@@ -24,7 +24,7 @@ afterAll(async () => {
     await pool.query(clearDatabaseQuery);
 });
 
-describe('Should test the editing profile endpoint', () => {
+describe('Should test the profile editing endpoint', () => {
     let cookieForTest = '';
 
     test('Should register a fake user', async () => {
@@ -37,7 +37,7 @@ describe('Should test the editing profile endpoint', () => {
             });
     });
 
-    test('Should pass the test with the http 200 status code', async () => {
+    test('Should retrieve profile data', async () => {
         await request(app)
             .get('/api/editProfile')
             .set('Cookie', [cookieForTest])
@@ -61,6 +61,23 @@ describe('Should test the editing profile endpoint', () => {
                 expect(info).toBe('');
                 expect(status).toBe(null);
                 expect(stay).toBe(true);
+            });
+    });
+
+    test('Should edit profile data', async () => {
+        await request(app)
+            .post('/api/editProfile')
+            .set('Cookie', [cookieForTest])
+            .attach('photo400', 'test/samples/image1.jpg')
+            .field('firstname', 'james')
+            .field('address1', '')
+            .field('address2', '')
+            .field('city', 'LA')
+            .field('state', 'CA')
+            .field('zipcode', 90002)
+            .expect(({ body }) => {
+                const { status } = body;
+                expect(status).toBe('updated');
             });
     });
 });

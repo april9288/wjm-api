@@ -28,6 +28,11 @@ const uploadHelper = async (file, size) => {
     const fileName = `${Date.now().toString()}.webp`;
     const location = `https://woojoouserphotos.s3-us-west-1.amazonaws.com/${fileName}`;
 
+    if (process.env.NODE_ENV !== 'production') {
+        // returning fake url for testing purpose
+        return location;
+    }
+
     try {
         // uploading file to AWS S3
         await s3
