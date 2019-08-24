@@ -90,7 +90,7 @@ routes.post('/', auth, multer().single('photo400'), async (req, res) => {
         const successMessage = {
             status: 'updated'
         };
-        res.status(200).send(successMessage);
+        res.status(201).send(successMessage);
     } catch (e) {
         res.status(400).send({ status: false });
     }

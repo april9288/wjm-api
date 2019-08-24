@@ -16,6 +16,14 @@ beforeAll(async () => {
     await pool.query(clearDatabaseQuery);
 });
 
+afterAll(async () => {
+    const clearDatabaseQuery = {
+        text: 'delete from users where email = $1',
+        values: [testUser.email]
+    };
+    await pool.query(clearDatabaseQuery);
+});
+
 describe('Should test the login system', () => {
     test('Should sign up a new user', async () => {
         await request(app)

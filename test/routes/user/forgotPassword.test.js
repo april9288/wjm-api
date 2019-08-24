@@ -4,7 +4,7 @@ const app = require('../../../src/app');
 const pool = require('../../../src/database/index');
 
 const testUser = {
-    email: 'pikachu@k.com',
+    email: 'pikachu123@k.com',
     password: 'abcd'
 };
 
@@ -29,17 +29,7 @@ describe('Should test 200 cases for /api/login/forgotPassword', () => {
         await request(app)
             .post('/api/signup')
             .send(testUser)
-            .expect('Set-Cookie', /WJM_TOKEN/)
-            .expect('Access-Control-Allow-Credentials', 'true')
-            .expect(201)
-            .expect(({ body }) => {
-                const { login, id, userEmail, uuid, photo100 } = body;
-                expect(login).toBe(true);
-                expect(typeof id).toBe('number');
-                expect(userEmail).toBe('pikachu@k.com');
-                expect(typeof uuid).toBe('string');
-                expect(photo100).toBe('');
-            });
+            .expect(201);
     });
 
     test('Should successfully send an email with a temporary password', async () => {

@@ -6,17 +6,17 @@
 - Secure Login System
     - The Express server generates a JSON web token and stores in two locations. One is stored in the database and the other one is delivered to the client's browser and will be stored in the cookie. It'll be safer than storing in the localstorage, which can be accessed by 3rd party code.
     - User's password is hashed with bcrypt. It's a one-way hash password, meaning there is no way guessing the original password with the hashed password. A salt is added to put more complexity into the hashing algorithm. 
-    - UUID is used to avoid exposing the table ID which should be secure all the time. Otherwise, hackers can guess what's goning to be next. UUID is great because it is a random number that is universially unique. So later on, when it comes to DB sharding, each data row can have a unique ID number to ensure uniqueness. 
-    - SendGrid API is used to send an email to users who forgot their password. The server will generate a random password and the password will be sent to the user's email, so that the user can later change their password in the settings page.
+    - UUID allows us to avoid exposing primary keys which should be secured all the time. Instread of using primary keys to route a specific page, UUID can be used here to let react-router-dom render corresponding pages. UUID is great because it is a random number that is universially unique. So later on, when it comes to DB sharding, each data row can have a unique ID number to ensure uniqueness. 
+    - SendGrid API sends an email to users who forgot their password. The server generates a random password and the password will be sent via email. Later on, user should change their password in the settings page.
 
 - Photo Upload System
     - Multer handles uploaded media files from the client. 
-    - Sharp converts the format of photos to .webp format, and resize to 3 different sizes; 550px, 400px, 100px.
-    - AWS SDK stores the resized photos to AWS S3.
-    - The url of photos is stored in Postgresql.
+    - Sharp converts format of photos to .webp format, and resizes to 3 different sizes; 550px, 400px, 100px.
+    - AWS SDK allows us to access to AWS S3 to store and serve photos.
+    - The url of photos is stored in the database.
 
 - Online Payment System
-    - Strip API is used here to allow users to pay for their selling items.
+    - Stripe API allows users to sell and buy their items.
 
 - Following/Follower System
 

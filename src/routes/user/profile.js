@@ -50,6 +50,12 @@ routes.patch('/password', auth, async (req, res) => {
     const { id } = req;
     const { newPassword } = req.body;
 
+    if (newPassword === undefined) {
+        return res
+            .status(400)
+            .send({ status: false, message: 'No Input Provided' });
+    }
+
     // hashing new password
     const hashedpw = await bcrypt.hash(
         newPassword,
@@ -110,6 +116,7 @@ routes.delete('/', auth, async (req, res) => {
             message: null,
             error
         };
+        res.clearCookie('WJM_TOKEN');
         res.status(400).send(errorMessage);
     }
 });
