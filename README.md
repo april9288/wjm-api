@@ -23,7 +23,14 @@
 
 ## Unit Test
 - Performed unit testing with Jest & Supertest
-- Currently testing has been done for the login system
+
+- [x] Sign Up, Log In, Log Out, User Authentication (with JWT)
+- [x] Change Password, Create Profile, Edit Profile, Delete Account
+- [x] Retrieve Following Data, Add Connection, Delete Connection
+- [x] Upload Photo
+- [x] Retrieve Feed, Create Post, Delete Post
+- [] Edit Post
+- [] Pay with Stripe
 
 ## AWS for Scaling
 ![](aws.png)
