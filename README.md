@@ -1,5 +1,5 @@
 # wjm-api
-> Express.js server for http://www.woojoo-market.com
+> Express.js server for https://www.woojoo-market.com
 
 - [Please click it to see the front-end repo](https://github.com/april9288/woojoo-market.com)
 
@@ -29,7 +29,6 @@
 - [x] Retrieve Following Data, Add Connection, Delete Connection
 - [x] Upload Photo
 - [x] Retrieve Feed, Create Post, Delete Post
-- [ ] Edit Post
 - [ ] Pay with Stripe
 
 ## AWS for Scaling

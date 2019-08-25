@@ -9,3 +9,5 @@ src/database/seed/seed-post.csv
 src/database/seed/seed-follow.csv
 
 src/database/seed/*
+
+src/redis/*
