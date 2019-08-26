@@ -32,7 +32,7 @@ For Front-end
 - Utilized AWS CloudFront's Edge Locations to reduce the latency
 
 For Back-end
-- Registered a domain with Godaddy ( bought 'woojoo.space' domain)
+- Registered a domain name with Godaddy ( bought 'woojoo.space' domain)
 - SSL Certified by Let's Encrypt
 - Set up Nginx on AWS EC2 for redirecting https requests to the back-end server
 - Deployed Express.js server on AWS EC2
