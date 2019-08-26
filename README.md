@@ -20,6 +20,24 @@
 
 - Following/Follower System
 
+## AWS for Scaling
+> I'm a certified AWS Cloud Practitioner. I designed this architecture to scale up on the cloud.
+
+![](aws.png)
+
+For Front-end
+- Registered a domain name on AWS Route 53 ( bought 'woojoo.com' domain )
+- SSL Certified by AWS Certificate Manager ( enabled https to provide stronger security )
+- Deployed React.js app on AWS S3
+- Utilized AWS CloudFront's Edge Locations to reduce the latency
+
+For Back-end
+- Registered a domain with Godaddy ( bought 'woojoo.space' domain)
+- SSL Certified by Let's Encrypt
+- Set up Nginx on AWS EC2 for redirecting https requests to the back-end server
+- Deployed Express.js server on AWS EC2
+- Set up a AWS S3 bucket to store and server media files
+- Set up Postgresql on AWS RDS 
 
 ## Unit Test
 > Performed unit testing with Jest & Supertest
@@ -31,14 +49,10 @@
 - [x] Retrieve Feed, Create Post, Delete Post
 - [ ] Pay with Stripe
 
-## AWS for Scaling
-![](aws.png)
-
-- Registered a domain with AWS Route 53
-- Deployed Express server on AWS EC2
-- Set up Postgresql on AWS RDS
-- Utilized AWS CloundFront for deliverying React.js app
-- Stored media files in AWS S3
+## Todo List
+- [x] Set up Redis on AWS Elasticache
+- [ ] Connect with the Redis DB and test 
+- [ ] Set up a CI/CD Pipeline on AWS
 
 ## Linting and Formatting
 - ESLint
@@ -58,7 +72,7 @@ npm start
 
 ### Requirements
 You need to install Nodejs.
-You need config files
+You need config files.
 
 ## Meta Data
 Jong-Ho (James) Kim
